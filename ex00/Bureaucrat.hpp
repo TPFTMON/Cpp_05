@@ -54,6 +54,6 @@ class Bureaucrat{
 };
 
 // Other Bureaucrat funstions:
-// insertion operator will be here
+std::ostream& operator<<( std::ostream &os, const Bureaucrat &bureaucrat);
 
 #endif

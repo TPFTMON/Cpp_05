@@ -1,6 +1,6 @@
-NAME		= Morty_I_Dont_Respect_Bureaucrat
+NAME		= They_Are_Bureaucrats_Morty!_I_Dont_Respect_Them
 
-SRCS		= main.cpp
+SRCS		= main.cpp Bureaucrat.cpp
 
 OBJ_DIR		= obj
 
