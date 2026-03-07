@@ -25,11 +25,13 @@ Bureaucrat::Bureaucrat(const std::string name, int grade)
 
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &to_copy){
+Bureaucrat::Bureaucrat(const Bureaucrat &to_copy)
+ : _name(to_copy._name), _grade(to_copy._grade)
+{
     std::cout << COPY_CONSTR_MSG << BUREAUCRAT_MSG;
 
     // this->_name = to_copy._name;
-    this->_grade = to_copy._grade;
+    // this->_grade = to_copy._grade;
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat &assign){

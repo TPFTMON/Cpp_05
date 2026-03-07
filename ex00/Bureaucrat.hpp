@@ -4,6 +4,7 @@
 // includes:
 # include <string>
 # include <iostream>
+# include <exception>
 
 // Messages:
 # define BUREAUCRAT_MSG "\e[0;32mBureaucrat\n\e[0m"
@@ -38,6 +39,18 @@ class Bureaucrat{
         int         getGrade() const;
         void        incrementGrade();
         void        decrementGrade();
+
+        // exceptions:
+        class GradeTooHighException : public std::exception {
+            public:
+                virtual const char* what() const throw();
+        };
+
+        class GradeTooLowException : public std::exception {
+            public:
+                virtual const char* what() const throw();
+        };
+
 };
 
 // Other Bureaucrat funstions:
