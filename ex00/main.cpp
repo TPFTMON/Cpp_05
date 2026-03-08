@@ -21,11 +21,15 @@ int main(void){
 
 
     try{
-        int e = 0;
-        Bureaucrat Kenny("Kenny", e);
+        // int e = 0;
+        Bureaucrat Kenny("Kenny", /*e*/0);
     }
     catch (std::exception & e){
         Bureaucrat Kenny("Kenny", 1);
+        // if (e < 1){
+            /* code */
+        // }
+
     }
     // Bureaucrat Bob("Bob", 160);
 
