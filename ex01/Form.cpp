@@ -5,7 +5,7 @@
 // ================================================================
 
 Form::Form()
- : _name("Some Unknown Form"), _isSigned(false), _signRequiredGrade(minimal_grade), _execRequiredGrade(minimal_grade)
+ : _name("Some Unknown Form"), _isSigned(false), _gradeRequiredToSigh(minimal_grade), _gradeRequiredToExec(minimal_grade)
 {
     std::cout << DEF_CONSTR_MSG << FORM_MSG;
 
@@ -22,14 +22,21 @@ Form::Form(std::string name, int gradeRequiredToSigh, int gradeRequiredToExec)
     else if (gradeRequiredToSigh > minimal_grade){ // 150
         throw Form::GradeTooLowException();
     }
-    this->_signRequiredGrade = gradeRequiredToSigh;
+    this->_gradeRequiredToSigh = gradeRequiredToSigh; // ? How then to assign a special value if I need to check whether the value is correct (1 < v < 150) ?
+
+    if (gradeRequiredToExec < maximal_grade){ // 1
+        throw Form::GradeTooHighException();
+    }
+    else if (gradeRequiredToExec > minimal_grade){ // 150
+        throw Form::GradeTooLowException();
+    }
+    this->_gradeRequiredToExec = gradeRequiredToExec;
 }
 
 
 Form::Form(const Form &to_copy){
     std::cout << COPY_CONSTR_MSG << FORM_MSG;
     // ... copying
-    // *this = to_copy; // Uncomment if assignment operator handles everything safely
 }
 
 Form& Form::operator=(const Form &assign){
@@ -50,6 +57,9 @@ Form::~Form(){
 //                OTHER FORM MEMBER FUNCTIONS
 // ================================================================
 
+void beSigned(const Bureaucrat& Bureaucrat){
+
+}
 // ... other members
 
 
@@ -58,4 +68,8 @@ Form::~Form(){
 //                  OTHER FORM FUNCTIONS
 // ================================================================
 
+std::ostream& operator<<( std::ostream &os, const Form &form){
+
+    os <<
+}
 // ... other functions

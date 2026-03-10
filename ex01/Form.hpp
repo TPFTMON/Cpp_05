@@ -28,8 +28,8 @@ class Form{
         // ... some private stuff
         const std::string _name;
         bool              _isSigned;
-        const int         _signRequiredGrade;
-        const int         _execRequiredGrade;
+        const int         _gradeRequiredToSigh;
+        const int         _gradeRequiredToExec;
 
     public:
         // Orthodox Canonical Form:
@@ -57,6 +57,7 @@ class Form{
 
 
 // Other:
+std::ostream& operator<<( std::ostream &os, const Form &form);
 // ...
 
 #endif
