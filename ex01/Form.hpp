@@ -25,7 +25,6 @@ class Form{
     static const int maximal_grade = 1;
 
     private:
-        // ... some private stuff
         const std::string _name;
         bool              _isSigned;
         const int         _gradeRequiredToSigh;
@@ -40,8 +39,11 @@ class Form{
         ~Form();
 
         // Other member functions:
-        // ... some members
-        void beSigned(const Bureaucrat& Bureaucrat);
+        std::string getName() const;
+        bool        getIsSigned() const;
+        int         getRequiredGradeToSign() const;
+        int         getRequiredGradeToExec() const;
+        void        beSigned(const Bureaucrat& bureaucrat);
 
         // Exceptions:
         class GradeTooHighException : public std::exception {
@@ -58,6 +60,5 @@ class Form{
 
 // Other:
 std::ostream& operator<<( std::ostream &os, const Form &form);
-// ...
 
 #endif

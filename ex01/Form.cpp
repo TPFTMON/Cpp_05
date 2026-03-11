@@ -12,39 +12,38 @@ Form::Form()
 }
 
 Form::Form(std::string name, int gradeRequiredToSigh, int gradeRequiredToExec)
- : _name(name), _isSigned(false)
+ : _name(name), _isSigned(false), _gradeRequiredToSigh(gradeRequiredToSigh), _gradeRequiredToExec(gradeRequiredToExec)
 {
     std::cout << NAME_AND_GRADE_REQUIREMENTS_CONSTR_MSG << FORM_MSG;
 
-    if (gradeRequiredToSigh < maximal_grade){ // 1
+    if (this->_gradeRequiredToSigh < maximal_grade){
         throw Form::GradeTooHighException();
     }
-    else if (gradeRequiredToSigh > minimal_grade){ // 150
+    else if(this->_gradeRequiredToSigh > minimal_grade){
         throw Form::GradeTooLowException();
     }
-    this->_gradeRequiredToSigh = gradeRequiredToSigh; // ? How then to assign a special value if I need to check whether the value is correct (1 < v < 150) ?
 
-    if (gradeRequiredToExec < maximal_grade){ // 1
+    if (this->_gradeRequiredToExec < maximal_grade){
         throw Form::GradeTooHighException();
     }
-    else if (gradeRequiredToExec > minimal_grade){ // 150
+    else if (this->_gradeRequiredToExec > minimal_grade){
         throw Form::GradeTooLowException();
     }
-    this->_gradeRequiredToExec = gradeRequiredToExec;
 }
 
 
-Form::Form(const Form &to_copy){
+Form::Form(const Form &to_copy)
+ : _name(to_copy._name), _isSigned(false), _gradeRequiredToSigh(to_copy._gradeRequiredToSigh), _gradeRequiredToExec(to_copy._gradeRequiredToExec)
+{
     std::cout << COPY_CONSTR_MSG << FORM_MSG;
-    // ... copying
 }
 
 Form& Form::operator=(const Form &assign){
     std::cout << COPY_ASSIGN_OP_MSG << FORM_MSG;
     if (this != &assign){
-        // ... assigning
+        this->_isSigned = assign._isSigned;
     }
-    return *this;
+    return (*this);
 }
 
 Form::~Form(){
@@ -57,10 +56,54 @@ Form::~Form(){
 //                OTHER FORM MEMBER FUNCTIONS
 // ================================================================
 
-void beSigned(const Bureaucrat& Bureaucrat){
+std::string Form::getName() const{
 
+    return (this->_name);
 }
-// ... other members
+
+bool        Form::getIsSigned() const{
+
+    return (this->_isSigned);
+}
+
+int         Form::getRequiredGradeToSign() const{
+
+    return (this->_gradeRequiredToSigh);
+}
+
+int         Form::getRequiredGradeToExec() const{
+
+    return (this->_gradeRequiredToExec);
+}
+
+
+void        Form::beSigned(const Bureaucrat& bureaucrat){
+
+    if (bureaucrat.getGrade() > this->_gradeRequiredToSigh){
+        throw Form::GradeTooLowException();
+    }
+    else if (bureaucrat.getGrade() <= this->_gradeRequiredToSigh){
+        this->_isSigned = true;
+    }
+}
+
+
+
+// ================================================================
+//                      EXCEPTIONS FUNCTIONS
+// ================================================================
+
+const char* Form::GradeTooHighException::what() const throw(){
+
+    // std::cout << "The grade is too HIGH!\n";
+    return ("The grade is too HIGH!\n");
+}
+
+const char* Form::GradeTooLowException::what() const throw(){
+
+    // std::cout << "The grade is too LOW!\n";
+    return ("The grade is too LOW!\n");
+}
 
 
 
@@ -70,6 +113,5 @@ void beSigned(const Bureaucrat& Bureaucrat){
 
 std::ostream& operator<<( std::ostream &os, const Form &form){
 
-    os <<
+    os << "Form named " << form.getName() << ": info: Required Grade to be signed: {" << form.getRequiredGradeToSign() << "}; Required Grade to be executed: {" << form.getRequiredGradeToExec() << "}; Is this form signed? -> {" << form.getIsSigned() << "}";
 }
-// ... other functions
