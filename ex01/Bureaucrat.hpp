@@ -18,7 +18,48 @@
 
 
 // Classes:
-class Form;
+class Bureaucrat;
+
+# ifndef FORM
+#  define FORM
+    class Form{
+
+        static const int minimal_grade = 150;
+        static const int maximal_grade = 1;
+
+        private:
+            const std::string _name;
+            bool              _isSigned;
+            const int         _gradeRequiredToSigh;
+            const int         _gradeRequiredToExec;
+
+        public:
+            // Orthodox Canonical Form:
+            Form();
+            Form(std::string name, int gradeRequiredToSigh, int gradeRequiredToExec);
+            Form(const Form &to_copy);
+            Form& operator=(const Form &assign);
+            ~Form();
+
+            // Other member functions:
+            std::string getName() const;
+            bool        getIsSigned() const;
+            int         getRequiredGradeToSign() const;
+            int         getRequiredGradeToExec() const;
+            void        beSigned(const Bureaucrat& bureaucrat);
+
+            // Exceptions:
+            class GradeTooHighException : public std::exception {
+                public:
+                    virtual const char* what() const throw();
+            };
+
+            class GradeTooLowException : public std::exception {
+                public:
+                    virtual const char* what() const throw();
+            };
+    };
+# endif
 
 class Bureaucrat{
 

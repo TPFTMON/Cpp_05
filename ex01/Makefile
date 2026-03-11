@@ -1,6 +1,6 @@
-NAME		=
+NAME		= Form_Up_Maggots!
 
-SRCS		= main.cpp
+SRCS		= main.cpp Bureaucrat.cpp Form.cpp
 
 OBJ_DIR		= obj
 

@@ -89,7 +89,7 @@ void        Bureaucrat::decrementGrade(){
 }
 
 void        Bureaucrat::signForm(Form &form){
-    form.beSigned(this);
+    form.beSigned(*this);
 }
 
 

@@ -17,7 +17,46 @@
 
 
 // Classes:
-class Bureaucrat;
+class Form;
+
+# ifndef BUREAUCRAT
+#  define BUREAUCRAT
+    class Bureaucrat{
+
+        static const int minimal_grade = 150;
+        static const int maximal_grade = 1;
+
+        private:
+            const std::string _name;
+            int               _grade;                // 1 <= _grade <= 150
+
+        public:
+            Bureaucrat();
+            Bureaucrat(const std::string name);
+            Bureaucrat(const std::string name, int grade);
+            Bureaucrat(const Bureaucrat &to_copy);
+            Bureaucrat& operator=(const Bureaucrat &assign);
+            ~Bureaucrat();
+
+            std::string getName() const;
+            int         getGrade() const;
+            void        incrementGrade();
+            void        decrementGrade();
+            void        signForm(Form &form);
+
+            // exceptions:
+            class GradeTooHighException : public std::exception {
+                public:
+                    virtual const char* what() const throw();
+            };
+
+            class GradeTooLowException : public std::exception {
+                public:
+                    virtual const char* what() const throw();
+            };
+
+    };
+# endif
 
 class Form{
 
