@@ -1,7 +1,9 @@
 #include "Bureaucrat.hpp"
+// #include "Form.hpp"
 
 int main(void){
 
+    // OCF base for Bureaucrat:
     Bureaucrat B1;
     Bureaucrat B2("Jerry");
     B2.incrementGrade();
@@ -20,6 +22,16 @@ int main(void){
 
 
 
+    // OCF base for Form:
+    Form F1;
+    Form F2("Not-Important", 140, 137);
+    Form F3(F2);
+    Form F4("Important", 20, 12);
+
+    std::cout << F1;
+    std::cout << F2;
+    std::cout << F3;
+    std::cout << F4;
 
 
     return (0);
