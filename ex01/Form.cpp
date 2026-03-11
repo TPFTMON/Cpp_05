@@ -16,17 +16,11 @@ Form::Form(std::string name, int gradeRequiredToSigh, int gradeRequiredToExec)
 {
     std::cout << NAME_AND_GRADE_REQUIREMENTS_CONSTR_MSG << FORM_MSG;
 
-    if (this->_gradeRequiredToSigh < maximal_grade){
+    if (this->_gradeRequiredToSigh < maximal_grade || this->_gradeRequiredToExec < maximal_grade){
         throw Form::GradeTooHighException();
-    }
-    else if(this->_gradeRequiredToSigh > minimal_grade){
-        throw Form::GradeTooLowException();
     }
 
-    if (this->_gradeRequiredToExec < maximal_grade){
-        throw Form::GradeTooHighException();
-    }
-    else if (this->_gradeRequiredToExec > minimal_grade){
+    if(this->_gradeRequiredToSigh > minimal_grade || this->_gradeRequiredToExec > minimal_grade){
         throw Form::GradeTooLowException();
     }
 }

@@ -2,6 +2,7 @@
 
 int main(void){
 
+    // OCF base:
     Bureaucrat B1;
     Bureaucrat B2("Jerry");
     B2.incrementGrade();
@@ -16,29 +17,46 @@ int main(void){
     std::cout << B2;
     std::cout << B3;
     std::cout << B4;
-    std::cout << B5;
+    std::cout << B5 << '\n';
 
 
 
+    // Tring/Catching exceptions for constructors
     try{
-        // int e = 0;
-        Bureaucrat Kenny("Kenny", /*e*/0);
+        Bureaucrat Kenny("Kenny", 0);
     }
-    catch (std::exception & e){
-        Bureaucrat Kenny("Kenny", 1);
-        // if (e < 1){
-            /* code */
-        // }
-
+    catch (std::exception& e){
+        std::cerr << "Exception caught: " << e.what() << '\n';
     }
-    // Bureaucrat Bob("Bob", 160);
+    try{
+        Bureaucrat Bob("Bob", 160);
+    }
+    catch(const std::exception& e){
+        std::cerr << "Exception caught: " << e.what() << '\n';
+    }
 
 
 
-    // Bureaucrat Nigel("Nigel", 1);
-    // Bureaucrat Victor("Victor", 150);
-    // Nigel.incrementGrade();
-    // Victor.decrementGrade();
+    // Tring/Catching exceptions for increment/decrement
+    Bureaucrat Nigel("Nigel", 1);
+    try{
+        Nigel.incrementGrade();
+    }
+    catch(const std::exception& e){
+        std::cerr << "Exception caught: " << e.what();
+    }
+    std::cout << Nigel << '\n';
+
+    Bureaucrat Victor("Victor", 150);
+    try{
+        Victor.decrementGrade();
+    }
+    catch(const std::exception& e){
+        std::cerr << "Exception caught: " << e.what();
+    }
+    std::cout << Victor << '\n';
+
+
 
     return (0);
 }

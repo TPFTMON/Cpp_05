@@ -1,7 +1,7 @@
 #include "Bureaucrat.hpp"
 
 // ================================================================
-//                         ORTHODOX BASE
+//                  ORTHODOX CANONICAL FORM BASE
 // ================================================================
 
 Bureaucrat::Bureaucrat()
