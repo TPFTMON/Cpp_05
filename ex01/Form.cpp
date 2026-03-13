@@ -71,14 +71,19 @@ int         Form::getRequiredGradeToExec() const{
 }
 
 
-void        Form::beSigned(const Bureaucrat& bureaucrat){
+bool        Form::beSigned(const Bureaucrat& bureaucrat){
 
+    // if (this->getIsSigned() == true){
+    //     return (true);
+    // }
     if (bureaucrat.getGrade() > this->_gradeRequiredToSigh){
         throw Form::GradeTooLowException();
     }
     else if (bureaucrat.getGrade() <= this->_gradeRequiredToSigh){
         this->_isSigned = true;
+        return (true);
     }
+    return (false);
 }
 
 
@@ -107,6 +112,14 @@ const char* Form::GradeTooLowException::what() const throw(){
 
 std::ostream& operator<<(std::ostream &os, const Form &form){
 
-    os << "Form named " << form.getName() << ": info: Required Grade to be signed: {" << form.getRequiredGradeToSign() << "}; Required Grade to be executed: {" << form.getRequiredGradeToExec() << "}; Is this form signed? -> {" << form.getIsSigned() << "}";
+    std::string is_signed;
+    if (form.getIsSigned() == true){
+        is_signed = "yes";
+    }
+    else{
+        is_signed = "no";
+    }
+
+    os << "Form named " << form.getName() << ", info: Required Grade to be signed: {" << form.getRequiredGradeToSign() << "} | Required Grade to be executed: {" << form.getRequiredGradeToExec() << "} | Is this form signed? -> {" << is_signed << "}\n";
     return (os);
 }

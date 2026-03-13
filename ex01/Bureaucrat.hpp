@@ -19,7 +19,13 @@
 # define DESTR_MSG "\e[0;31mDestructor\e[0m called of "
 
 
+
 // Classes:
+# ifndef FORM
+#  define FORM
+class Form;
+# endif
+
 class Bureaucrat{
 
     static const int minimal_grade = 150;

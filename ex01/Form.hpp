@@ -17,7 +17,13 @@
 # define DESTR_MSG "\e[0;31mDestructor\e[0m called of "
 
 
+
 // Classes:
+# ifndef BUREAUCRAT
+#  define BUREAUCRAT
+class Bureaucrat;
+# endif
+
 class Form{
 
     static const int minimal_grade = 150;
@@ -42,7 +48,7 @@ class Form{
         bool        getIsSigned() const;
         int         getRequiredGradeToSign() const;
         int         getRequiredGradeToExec() const;
-        void        beSigned(const Bureaucrat& bureaucrat);
+        bool        beSigned(const Bureaucrat& bureaucrat);
 
         // Exceptions:
         class GradeTooHighException : public std::exception {
