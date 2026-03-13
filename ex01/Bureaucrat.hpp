@@ -5,7 +5,6 @@
 # include <iostream>
 # include <string>
 # include <exception>
-# include "Form.hpp"
 
 
 // Messages:
@@ -21,10 +20,7 @@
 
 
 // Classes:
-# ifndef FORM
-#  define FORM
 class Form;
-# endif
 
 class Bureaucrat{
 

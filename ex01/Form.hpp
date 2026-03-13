@@ -4,7 +4,7 @@
 // Includes:
 # include <iostream>
 # include <string>
-# include "Bureaucrat.hpp"
+# include <exception>
 
 
 // Messages:
@@ -19,10 +19,7 @@
 
 
 // Classes:
-# ifndef BUREAUCRAT
-#  define BUREAUCRAT
 class Bureaucrat;
-# endif
 
 class Form{
 

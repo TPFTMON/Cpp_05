@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 // ================================================================
 //                  ORTHODOX CANONICAL FORM BASE
