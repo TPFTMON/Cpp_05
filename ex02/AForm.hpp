@@ -19,11 +19,11 @@ class Bureaucrat;
 
 class AForm{
 
-    private:
-        const std::string _name;
-        bool              _isSigned;
-        const int         _gradeRequiredToSign;
-        const int         _gradeRequiredToExec;
+    // private:
+    //     const std::string _name;
+    //     bool              _isSigned;
+    //     const int         _gradeRequiredToSign;
+    //     const int         _gradeRequiredToExec;
 
     // protected:
     //     std::string       _target;
@@ -37,6 +37,17 @@ class AForm{
         // Other member functions:
         // ... some members
         virtual void execute(Bureaucrat const & executor) const = 0;
+
+        // Exceptions:
+        class GradeTooHighException : public std::exception {
+            public:
+                virtual const char* what() const throw();
+        };
+
+        class GradeTooLowException : public std::exception {
+            public:
+                virtual const char* what() const throw();
+        };
 
 };
 

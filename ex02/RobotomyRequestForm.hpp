@@ -3,6 +3,7 @@
 
 // Includes:
 # include <iostream>
+# include "string"
 # include "AForm.hpp"
 
 

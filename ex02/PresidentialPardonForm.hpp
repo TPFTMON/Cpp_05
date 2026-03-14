@@ -3,6 +3,7 @@
 
 // Includes:
 # include <iostream>
+# include "string"
 # include "AForm.hpp"
 
 
@@ -36,7 +37,7 @@ class PresidentialPardonForm : public AForm{
         ~PresidentialPardonForm();
 
         // Other member functions:
-        std::string getTarget();
+        std::string getTarget() const;
         void        execute(Bureaucrat const & executor) const;
 
 };

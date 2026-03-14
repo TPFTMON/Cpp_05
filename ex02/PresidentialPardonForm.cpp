@@ -1,4 +1,5 @@
 #include "PresidentialPardonForm.hpp"
+#include "Bureaucrat.hpp"
 
 // ================================================================
 //                         ORTHODOX BASE
@@ -48,13 +49,21 @@ PresidentialPardonForm::~PresidentialPardonForm(){
 //                OTHER PRESIDENTIALPARDONFORM MEMBER FUNCTIONS
 // ================================================================
 
-std::string PresidentialPardonForm::getTarget(){
+std::string PresidentialPardonForm::getTarget() const{
 
     return (this->_target);
 }
 
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const{
+
+    if(executor.getGrade() > this->_gradeRequiredToExec){
+        throw PresidentialPardonForm::GradeTooLowException();
+    }
     std::cout << "We are informing you that " << this->getTarget() << " has been pardoned by Zaphod Beeblebrox.\n";
+
+    if(this->_gradeRequiredToSign){
+        
+    }
 }
 
 
