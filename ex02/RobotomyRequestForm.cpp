@@ -9,6 +9,11 @@ RobotomyRequestForm::RobotomyRequestForm(){
 
 }
 
+RobotomyRequestForm::RobotomyRequestForm(std::string target){
+    std::cout << TARGET_CONSTR_MSG << ROBOTOMYREQUESTFORM_MSG;
+
+}
+
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &to_copy){
     std::cout << COPY_CONSTR_MSG << ROBOTOMYREQUESTFORM_MSG;
     // ... copying

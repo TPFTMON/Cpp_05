@@ -25,6 +25,9 @@ class AForm{
         const int         _gradeRequiredToSign;
         const int         _gradeRequiredToExec;
 
+    // protected:
+    //     std::string       _target;
+
     public:
         virtual ~AForm();
 

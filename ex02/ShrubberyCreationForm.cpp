@@ -9,6 +9,11 @@ ShrubberyCreationForm::ShrubberyCreationForm(){
 
 }
 
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target){
+    std::cout << TARGET_CONSTR_MSG << SHRUBBERYCREATIONFORM_MSG;
+
+}
+
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &to_copy){
     std::cout << COPY_CONSTR_MSG << SHRUBBERYCREATIONFORM_MSG;
     // ... copying

@@ -5,8 +5,6 @@
 # include <iostream>
 # include <string>
 # include <exception>
-# include "Form.hpp"
-
 
 // Messages:
 # define BUREAUCRAT_MSG "\e[0;32mBureaucrat\n\e[0m"
@@ -21,6 +19,8 @@
 
 
 // Classes:
+class AForm;
+
 class Bureaucrat{
 
     static const int minimal_grade = 150;

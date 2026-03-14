@@ -9,6 +9,7 @@
 # define ROBOTOMYREQUESTFORM_MSG "\e[0;32mRobotomyRequestForm\n\e[0m"
 
 # define DEF_CONSTR_MSG "\e[0;33mDefault Constructor\e[0m called of "
+# define TARGET_CONSTR_MSG "\e[0;33mTarget Constructor\e[0m called of "
 # define COPY_CONSTR_MSG "\e[0;33mCopy Constructor\e[0m called of "
 # define COPY_ASSIGN_OP_MSG "\e[0;35mCopy assignment operator\e[0m called of "
 # define DESTR_MSG "\e[0;31mDestructor\e[0m called of "
@@ -17,12 +18,16 @@
 // Classes:
 class RobotomyRequestForm{
 
+    int sign_minimal_grade_RRF = 72;
+    int exec_minimal_grade_RRF = 45;
+
     private:
-        // ... some private stuff
+        std::string _target;
 
     public:
         // Orthodox Canonical Form:
         RobotomyRequestForm();
+        RobotomyRequestForm(std::string target);
         RobotomyRequestForm(const RobotomyRequestForm &to_copy);
         RobotomyRequestForm& operator=(const RobotomyRequestForm &assign);
         ~RobotomyRequestForm();

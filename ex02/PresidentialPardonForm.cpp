@@ -4,8 +4,15 @@
 //                         ORTHODOX BASE
 // ================================================================
 
-PresidentialPardonForm::PresidentialPardonForm(){
+PresidentialPardonForm::PresidentialPardonForm()
+ : _target("NO_TARGET"), _gradeRequiredToSign(sign_minimal_grade_PPF), _gradeRequiredToExec(exec_minimal_grade_PPF)
+{
     std::cout << DEF_CONSTR_MSG << PRESIDENTIALPARDONFORM_MSG;
+
+}
+
+PresidentialPardonForm::PresidentialPardonForm(std::string target){
+    std::cout << TARGET_CONSTR_MSG << PRESIDENTIALPARDONFORM_MSG;
 
 }
 
