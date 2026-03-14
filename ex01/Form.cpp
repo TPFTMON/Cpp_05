@@ -6,29 +6,29 @@
 // ================================================================
 
 Form::Form()
- : _name("Some Unknown Form"), _isSigned(false), _gradeRequiredToSigh(minimal_grade), _gradeRequiredToExec(minimal_grade)
+ : _name("Some Unknown Form"), _isSigned(false), _gradeRequiredToSign(minimal_grade), _gradeRequiredToExec(minimal_grade)
 {
     std::cout << DEF_CONSTR_MSG << FORM_MSG;
 
 }
 
-Form::Form(std::string name, int gradeRequiredToSigh, int gradeRequiredToExec)
- : _name(name), _isSigned(false), _gradeRequiredToSigh(gradeRequiredToSigh), _gradeRequiredToExec(gradeRequiredToExec)
+Form::Form(std::string name, int gradeRequiredToSign, int gradeRequiredToExec)
+ : _name(name), _isSigned(false), _gradeRequiredToSign(gradeRequiredToSign), _gradeRequiredToExec(gradeRequiredToExec)
 {
     std::cout << NAME_AND_GRADE_REQUIREMENTS_CONSTR_MSG << FORM_MSG;
 
-    if (this->_gradeRequiredToSigh < maximal_grade || this->_gradeRequiredToExec < maximal_grade){
+    if (this->_gradeRequiredToSign < maximal_grade || this->_gradeRequiredToExec < maximal_grade){
         throw Form::GradeTooHighException();
     }
 
-    if(this->_gradeRequiredToSigh > minimal_grade || this->_gradeRequiredToExec > minimal_grade){
+    if(this->_gradeRequiredToSign > minimal_grade || this->_gradeRequiredToExec > minimal_grade){
         throw Form::GradeTooLowException();
     }
 }
 
 
 Form::Form(const Form &to_copy)
- : _name(to_copy._name), _isSigned(false), _gradeRequiredToSigh(to_copy._gradeRequiredToSigh), _gradeRequiredToExec(to_copy._gradeRequiredToExec)
+ : _name(to_copy._name), _isSigned(false), _gradeRequiredToSign(to_copy._gradeRequiredToSign), _gradeRequiredToExec(to_copy._gradeRequiredToExec)
 {
     std::cout << COPY_CONSTR_MSG << FORM_MSG;
 }
@@ -63,7 +63,7 @@ bool        Form::getIsSigned() const{
 
 int         Form::getRequiredGradeToSign() const{
 
-    return (this->_gradeRequiredToSigh);
+    return (this->_gradeRequiredToSign);
 }
 
 int         Form::getRequiredGradeToExec() const{
@@ -72,19 +72,12 @@ int         Form::getRequiredGradeToExec() const{
 }
 
 
-bool        Form::beSigned(const Bureaucrat& bureaucrat){
+void        Form::beSigned(const Bureaucrat& bureaucrat){
 
-    // if (this->getIsSigned() == true){
-    //     return (true);
-    // }
-    if (bureaucrat.getGrade() > this->_gradeRequiredToSigh){
+    if (bureaucrat.getGrade() > this->_gradeRequiredToSign){
         throw Form::GradeTooLowException();
     }
-    else if (bureaucrat.getGrade() <= this->_gradeRequiredToSigh){
-        this->_isSigned = true;
-        return (true);
-    }
-    return (false);
+    this->_isSigned = true;
 }
 
 

@@ -15,12 +15,14 @@
 
 
 // Classes:
+class Bureaucrat;
+
 class AForm{
 
     private:
         const std::string _name;
         bool              _isSigned;
-        const int         _gradeRequiredToSigh;
+        const int         _gradeRequiredToSign;
         const int         _gradeRequiredToExec;
 
     public:

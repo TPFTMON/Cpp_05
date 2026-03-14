@@ -65,7 +65,7 @@ int main(void){
     Form Form2("Big One", 50, 45);
     Bureaucrat Ben("Ben", 100);
     try{
-        Form2.beSigned(Ben);  ////////////// Understand what to do with this one ///////////////
+        Form2.beSigned(Ben);
     }
     catch (std::exception& e){
         std::cerr << "5. Exception caught: " << e.what() << "\n\n";
@@ -73,14 +73,12 @@ int main(void){
 
 
     // signForm tests:
-    std::cout << Form2;
-    try{
-        Ben.signForm(Form2);
-    }
-    catch (std::exception& e){
-        std::cerr << "6. Exception caught: " << e.what() << "\n";
-    }
     Bureaucrat Gerard("Gerard", 10);
+
+    std::cout << Form2;
+    Ben.signForm(Form2);
+    std::cout << Form2 << "\n";
+
     Gerard.signForm(Form2);
     std::cout << Form2 << "\n";
 

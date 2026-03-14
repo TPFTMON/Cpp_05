@@ -29,13 +29,13 @@ class Form{
     private:
         const std::string _name;
         bool              _isSigned;
-        const int         _gradeRequiredToSigh;
+        const int         _gradeRequiredToSign;
         const int         _gradeRequiredToExec;
 
     public:
         // Orthodox Canonical Form:
         Form();
-        Form(std::string name, int gradeRequiredToSigh, int gradeRequiredToExec);
+        Form(std::string name, int gradeRequiredToSign, int gradeRequiredToExec);
         Form(const Form &to_copy);
         Form& operator=(const Form &assign);
         ~Form();
@@ -45,7 +45,7 @@ class Form{
         bool        getIsSigned() const;
         int         getRequiredGradeToSign() const;
         int         getRequiredGradeToExec() const;
-        bool        beSigned(const Bureaucrat& bureaucrat);
+        void        beSigned(const Bureaucrat& bureaucrat);
 
         // Exceptions:
         class GradeTooHighException : public std::exception {
