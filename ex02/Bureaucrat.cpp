@@ -85,13 +85,14 @@ void        Bureaucrat::decrementGrade(){
     this->_grade++;
 }
 
-void        Bureaucrat::signForm(Form &form){
-    if (form.beSigned(*this) == true){
-        std::cout << "Bureaucrat " << this->getName() << " signed form " << form.getName() << '\n';
-    }
-    else{
-        std::cout << "Bureaucrat " << this->getName() << " couldn’t sign " << form.getName() << " because their grade is too low.";
-    }
+void        Bureaucrat::signForm(AForm &form){
+    (void)form;
+    // if (form.beSigned(*this) == true){
+    //     std::cout << "Bureaucrat " << this->getName() << " signed form " << form.getName() << '\n';
+    // }
+    // else{
+    //     std::cout << "Bureaucrat " << this->getName() << " couldn’t sign " << form.getName() << " because their grade is too low.";
+    // }
 }
 
 

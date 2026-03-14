@@ -19,11 +19,11 @@
 // Classes:
 class PresidentialPardonForm : public AForm{
 
-    int sign_minimal_grade_PPF = 25;
-    int exec_minimal_grade_PPF = 5;
+    static const int sign_minimal_grade_PPF = 25;
+    static const int exec_minimal_grade_PPF = 5;
 
     private:
-        std::string _target;
+        std::string       _target;
         const int         _gradeRequiredToSign;
         const int         _gradeRequiredToExec;
 
@@ -36,7 +36,8 @@ class PresidentialPardonForm : public AForm{
         ~PresidentialPardonForm();
 
         // Other member functions:
-        // ... some members
+        std::string getTarget();
+        void        execute(Bureaucrat const & executor) const;
 
 };
 

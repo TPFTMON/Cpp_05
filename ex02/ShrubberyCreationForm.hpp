@@ -3,6 +3,7 @@
 
 // Includes:
 # include <iostream>
+# include "AForm.hpp"
 
 
 // Messages:
@@ -16,13 +17,15 @@
 
 
 // Classes:
-class ShrubberyCreationForm{
+class ShrubberyCreationForm : public AForm{
 
-    int sign_minimal_grade_SCF = 145;
-    int exec_minimal_grade_SCF = 137;
+    static const int sign_minimal_grade_SCF = 145;
+    static const int exec_minimal_grade_SCF = 137;
 
     private:
-        std::string _target;
+        std::string       _target;
+        const int         _gradeRequiredToSign;
+        const int         _gradeRequiredToExec;
 
     public:
         // Orthodox Canonical Form:
@@ -33,7 +36,8 @@ class ShrubberyCreationForm{
         ~ShrubberyCreationForm();
 
         // Other member functions:
-        // ... some members
+        std::string getTarget();
+        void        execute(Bureaucrat const & executor) const;
 
 };
 

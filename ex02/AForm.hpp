@@ -29,6 +29,9 @@ class AForm{
     //     std::string       _target;
 
     public:
+        AForm();
+        AForm(const AForm &to_copy);
+        AForm& operator=(const AForm &assign);
         virtual ~AForm();
 
         // Other member functions:

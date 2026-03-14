@@ -4,28 +4,36 @@
 //                         ORTHODOX BASE
 // ================================================================
 
-RobotomyRequestForm::RobotomyRequestForm(){
+RobotomyRequestForm::RobotomyRequestForm()
+ : _target("NO_TARGET"), _gradeRequiredToSign(sign_minimal_grade_RRF), _gradeRequiredToExec(exec_minimal_grade_RRF)
+{
     std::cout << DEF_CONSTR_MSG << ROBOTOMYREQUESTFORM_MSG;
 
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target){
+RobotomyRequestForm::RobotomyRequestForm(std::string target)
+ : _target(target), _gradeRequiredToSign(sign_minimal_grade_RRF), _gradeRequiredToExec(exec_minimal_grade_RRF)
+{
     std::cout << TARGET_CONSTR_MSG << ROBOTOMYREQUESTFORM_MSG;
 
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &to_copy){
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &to_copy)
+ : _gradeRequiredToSign(sign_minimal_grade_RRF), _gradeRequiredToExec(exec_minimal_grade_RRF)
+{
     std::cout << COPY_CONSTR_MSG << ROBOTOMYREQUESTFORM_MSG;
-    // ... copying
 
+    this->_target = to_copy._target;
 }
 
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm &assign){
+
     std::cout << COPY_ASSIGN_OP_MSG << ROBOTOMYREQUESTFORM_MSG;
+
     if (this != &assign){
-        // ... assigning
+        this->_target = assign._target;
     }
-    return *this;
+    return (*this);
 
 }
 
@@ -40,7 +48,14 @@ RobotomyRequestForm::~RobotomyRequestForm(){
 //                OTHER ROBOTOMYREQUESTFORM MEMBER FUNCTIONS
 // ================================================================
 
-// ... other members
+std::string RobotomyRequestForm::getTarget(){
+
+    return (this->_target);
+}
+
+void RobotomyRequestForm::execute(Bureaucrat const & executor) const{
+    std::cout << "ROBOTOMY REQUEST FORM\n";
+}
 
 
 

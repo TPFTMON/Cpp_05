@@ -11,23 +11,29 @@ PresidentialPardonForm::PresidentialPardonForm()
 
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target){
+PresidentialPardonForm::PresidentialPardonForm(std::string target)
+ : _target(target), _gradeRequiredToSign(sign_minimal_grade_PPF), _gradeRequiredToExec(exec_minimal_grade_PPF)
+{
     std::cout << TARGET_CONSTR_MSG << PRESIDENTIALPARDONFORM_MSG;
 
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &to_copy){
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &to_copy)
+ : _gradeRequiredToSign(sign_minimal_grade_PPF), _gradeRequiredToExec(exec_minimal_grade_PPF)
+{
     std::cout << COPY_CONSTR_MSG << PRESIDENTIALPARDONFORM_MSG;
-    // ... copying
 
+    this->_target = to_copy._target;
 }
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm &assign){
+
     std::cout << COPY_ASSIGN_OP_MSG << PRESIDENTIALPARDONFORM_MSG;
+
     if (this != &assign){
-        // ... assigning
+        this->_target = assign._target;
     }
-    return *this;
+    return (*this);
 
 }
 
@@ -42,7 +48,14 @@ PresidentialPardonForm::~PresidentialPardonForm(){
 //                OTHER PRESIDENTIALPARDONFORM MEMBER FUNCTIONS
 // ================================================================
 
-// ... other members
+std::string PresidentialPardonForm::getTarget(){
+
+    return (this->_target);
+}
+
+void PresidentialPardonForm::execute(Bureaucrat const & executor) const{
+    std::cout << "We are informing you that " << this->getTarget() << " has been pardoned by Zaphod Beeblebrox.\n";
+}
 
 
 
