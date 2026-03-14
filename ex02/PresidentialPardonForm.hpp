@@ -25,8 +25,6 @@ class PresidentialPardonForm : public AForm{
 
     private:
         std::string       _target;
-        const int         _gradeRequiredToSign;
-        const int         _gradeRequiredToExec;
 
     public:
         // Orthodox Canonical Form:
@@ -38,12 +36,12 @@ class PresidentialPardonForm : public AForm{
 
         // Other member functions:
         std::string getTarget() const;
-        void        execute(Bureaucrat const & executor) const;
+        void        executeForm() const;
 
 };
 
 
 // Other:
-// ...
+std::ostream& operator<<(std::ostream &os, const PresidentialPardonForm &form);
 
 #endif

@@ -6,21 +6,24 @@
 // ================================================================
 
 PresidentialPardonForm::PresidentialPardonForm()
- : _target("NO_TARGET"), _gradeRequiredToSign(sign_minimal_grade_PPF), _gradeRequiredToExec(exec_minimal_grade_PPF)
+
+ : AForm("Presidential Pardon", sign_minimal_grade_PPF, exec_minimal_grade_PPF), _target("NO_TARGET")
 {
     std::cout << DEF_CONSTR_MSG << PRESIDENTIALPARDONFORM_MSG;
 
 }
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target)
- : _target(target), _gradeRequiredToSign(sign_minimal_grade_PPF), _gradeRequiredToExec(exec_minimal_grade_PPF)
+
+ : AForm("Presidential Pardon", sign_minimal_grade_PPF, exec_minimal_grade_PPF), _target(target)
 {
     std::cout << TARGET_CONSTR_MSG << PRESIDENTIALPARDONFORM_MSG;
 
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &to_copy)
- : _gradeRequiredToSign(sign_minimal_grade_PPF), _gradeRequiredToExec(exec_minimal_grade_PPF)
+
+ : AForm(to_copy)
 {
     std::cout << COPY_CONSTR_MSG << PRESIDENTIALPARDONFORM_MSG;
 
@@ -32,15 +35,16 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
     std::cout << COPY_ASSIGN_OP_MSG << PRESIDENTIALPARDONFORM_MSG;
 
     if (this != &assign){
+        AForm::operator=(assign);
+
         this->_target = assign._target;
     }
     return (*this);
-
 }
 
 PresidentialPardonForm::~PresidentialPardonForm(){
-    std::cout << DESTR_MSG << PRESIDENTIALPARDONFORM_MSG;
 
+    std::cout << DESTR_MSG << PRESIDENTIALPARDONFORM_MSG;
 }
 
 
@@ -54,16 +58,9 @@ std::string PresidentialPardonForm::getTarget() const{
     return (this->_target);
 }
 
-void PresidentialPardonForm::execute(Bureaucrat const & executor) const{
+void PresidentialPardonForm::executeForm() const{
 
-    if(executor.getGrade() > this->_gradeRequiredToExec){
-        throw PresidentialPardonForm::GradeTooLowException();
-    }
     std::cout << "We are informing you that " << this->getTarget() << " has been pardoned by Zaphod Beeblebrox.\n";
-
-    if(this->_gradeRequiredToSign){
-        
-    }
 }
 
 
@@ -72,4 +69,16 @@ void PresidentialPardonForm::execute(Bureaucrat const & executor) const{
 //                  OTHER PRESIDENTIALPARDONFORM FUNCTIONS
 // ================================================================
 
-// ... other functions
+std::ostream& operator<<(std::ostream &os, const PresidentialPardonForm &form){
+
+    std::string is_signed;
+    if (form.getIsSigned() == true){
+        is_signed = "yes";
+    }
+    else{
+        is_signed = "no";
+    }
+
+    os << "Form named " << form.getName() << ", info: Required Grade to be signed: {" << form.getRequiredGradeToSign() << "} | Required Grade to be executed: {" << form.getRequiredGradeToExec() << "} | Is this form signed? -> {" << is_signed << "} | Form's target: {" << form.getTarget() << "}\n";
+    return (os);
+}

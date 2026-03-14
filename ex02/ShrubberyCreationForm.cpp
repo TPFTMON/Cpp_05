@@ -5,21 +5,22 @@
 // ================================================================
 
 ShrubberyCreationForm::ShrubberyCreationForm()
- : _target("NO_TARGET"), _gradeRequiredToSign(sign_minimal_grade_SCF), _gradeRequiredToExec(exec_minimal_grade_SCF)
+ : AForm("ShrubberyCreationForm", sign_minimal_grade_SCF, exec_minimal_grade_SCF), _target("NO_TARGET")
 {
     std::cout << DEF_CONSTR_MSG << SHRUBBERYCREATIONFORM_MSG;
 
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
- : _target(target), _gradeRequiredToSign(sign_minimal_grade_SCF), _gradeRequiredToExec(exec_minimal_grade_SCF)
+ : AForm("ShrubberyCreationForm", sign_minimal_grade_SCF, exec_minimal_grade_SCF), _target(target)
 {
     std::cout << TARGET_CONSTR_MSG << SHRUBBERYCREATIONFORM_MSG;
 
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &to_copy)
- : _gradeRequiredToSign(sign_minimal_grade_SCF), _gradeRequiredToExec(exec_minimal_grade_SCF)
+
+ : AForm(to_copy)
 {
     std::cout << COPY_CONSTR_MSG << SHRUBBERYCREATIONFORM_MSG;
 
@@ -53,7 +54,8 @@ std::string ShrubberyCreationForm::getTarget(){
     return (this->_target);
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const & executor) const{
+void        ShrubberyCreationForm::executeForm() const{
+
     std::cout << "SHRUBBERY CREATION FORM\n";
 }
 

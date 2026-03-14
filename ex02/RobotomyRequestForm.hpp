@@ -25,8 +25,6 @@ class RobotomyRequestForm : public AForm{
 
     private:
         std::string       _target;
-        const int         _gradeRequiredToSign;
-        const int         _gradeRequiredToExec;
 
     public:
         // Orthodox Canonical Form:
@@ -38,7 +36,7 @@ class RobotomyRequestForm : public AForm{
 
         // Other member functions:
         std::string getTarget();
-        void        execute(Bureaucrat const & executor) const;
+        void        executeForm() const;
 };
 
 

@@ -6,6 +6,7 @@
 # include <string>
 # include <exception>
 
+
 // Messages:
 # define BUREAUCRAT_MSG "\e[0;32mBureaucrat\n\e[0m"
 
@@ -15,7 +16,6 @@
 # define COPY_CONSTR_MSG "\e[0;33mCopy Constructor\e[0m called of "
 # define COPY_ASSIGN_OP_MSG "\e[0;35mCopy assignment operator\e[0m called of "
 # define DESTR_MSG "\e[0;31mDestructor\e[0m called of "
-
 
 
 // Classes:
@@ -57,6 +57,7 @@ class Bureaucrat{
         };
 
 };
+
 
 // Other Bureaucrat funstions:
 std::ostream& operator<<(std::ostream &os, const Bureaucrat &bureaucrat);
