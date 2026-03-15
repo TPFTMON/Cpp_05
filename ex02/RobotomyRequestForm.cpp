@@ -52,13 +52,25 @@ RobotomyRequestForm::~RobotomyRequestForm(){
 //                OTHER ROBOTOMYREQUESTFORM MEMBER FUNCTIONS
 // ================================================================
 
-std::string RobotomyRequestForm::getTarget(){
+std::string RobotomyRequestForm::getTarget() const{
 
     return (this->_target);
 }
 
 void RobotomyRequestForm::executeForm() const{
-    std::cout << "ROBOTOMY REQUEST FORM\n";
+
+    std::cout << "*SOME HORRIBLE DRILLING NOISES*\n";
+
+    srand(time(0));
+    bool success = rand() % 2;
+    std::cout << success << "\n";
+
+    if (success == true){
+        std::cout << this->_target << " has been robotomized successfully.\n";
+    }
+    else{
+        std::cout << "Robotomy has failed on " << this->_target << " (target's dead).\n";
+    }
 }
 
 
@@ -67,4 +79,16 @@ void RobotomyRequestForm::executeForm() const{
 //                  OTHER ROBOTOMYREQUESTFORM FUNCTIONS
 // ================================================================
 
-// ... other functions
+std::ostream& operator<<(std::ostream &os, const RobotomyRequestForm &form){
+
+    std::string is_signed;
+    if (form.getIsSigned() == true){
+        is_signed = "yes";
+    }
+    else{
+        is_signed = "no";
+    }
+
+    os << "Form named " << form.getName() << ", info: Required Grade to be signed: {" << form.getRequiredGradeToSign() << "} | Required Grade to be executed: {" << form.getRequiredGradeToExec() << "} | Is this form signed? -> {" << is_signed << "} | Form's target: {" << form.getTarget() << "}\n";
+    return (os);
+}

@@ -92,7 +92,7 @@ void        Bureaucrat::signForm(AForm &form){
         form.beSigned(*this);
     }
     catch(const std::exception& e){
-        std::cerr << "Bureaucrat " << this->getName() << " couldn’t sign form" << form.getName() << " because their grade is too low.\n";
+        std::cerr << "Bureaucrat " << this->getName() << " couldn’t sign form " << form.getName() << " because their grade is too low.\n";
         return ;
     }
     std::cout << "Bureaucrat " << this->getName() << " signed form " << form.getName() << '\n';

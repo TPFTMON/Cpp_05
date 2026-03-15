@@ -49,7 +49,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm(){
 //                OTHER SHRUBBERYCREATIONFORM MEMBER FUNCTIONS
 // ================================================================
 
-std::string ShrubberyCreationForm::getTarget(){
+std::string ShrubberyCreationForm::getTarget() const{
 
     return (this->_target);
 }

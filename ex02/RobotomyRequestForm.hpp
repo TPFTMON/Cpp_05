@@ -3,7 +3,8 @@
 
 // Includes:
 # include <iostream>
-# include "string"
+# include <string>
+# include <cstdlib>
 # include "AForm.hpp"
 
 
@@ -35,13 +36,13 @@ class RobotomyRequestForm : public AForm{
         ~RobotomyRequestForm();
 
         // Other member functions:
-        std::string getTarget();
+        std::string getTarget() const;
         void        executeForm() const;
 };
 
 
 
 // Other:
-// ...
+std::ostream& operator<<(std::ostream &os, const RobotomyRequestForm &form);
 
 #endif

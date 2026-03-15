@@ -3,7 +3,7 @@
 
 // Includes:
 # include <iostream>
-# include "string"
+# include <string>
 # include "AForm.hpp"
 
 
@@ -35,7 +35,7 @@ class ShrubberyCreationForm : public AForm{
         ~ShrubberyCreationForm();
 
         // Other member functions:
-        std::string getTarget();
+        std::string getTarget() const;
         void        executeForm() const;
 
 };

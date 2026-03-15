@@ -1,7 +1,7 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 #include "PresidentialPardonForm.hpp"
-// #include "RobotomyRequestForm.hpp"
+#include "RobotomyRequestForm.hpp"
 // #include "ShrubberyCreationForm.hpp"
 
 int main(void){
@@ -13,13 +13,30 @@ int main(void){
     PresidentialPardonForm PPF4("Some Other Guy Initially");
     PPF4 = PPF3;
 
-
     std::cout << "\n";
     std::cout << PPF1;
     std::cout << PPF2;
     std::cout << PPF3;
     std::cout << PPF4;
     std::cout << "\n";
+
+
+
+    RobotomyRequestForm RRF1;
+    RobotomyRequestForm RRF2("Zac");
+    RobotomyRequestForm RRF3(RRF2);
+    RobotomyRequestForm RRF4("Some Other Guy Initially");
+    RRF4 = RRF3;
+
+    std::cout << "\n";
+    std::cout << RRF1;
+    std::cout << RRF2;
+    std::cout << RRF3;
+    std::cout << RRF4;
+    std::cout << "\n";
+
+
+
 
 
 
@@ -51,7 +68,7 @@ int main(void){
 
 
 
-    // executeForm() tests:
+    // executeForm() and PresidentialPardon functioning tests:
     PresidentialPardonForm PP2("Daniel");
     Bureaucrat Victor("Victor", 2);
     Bureaucrat Nina("Nina", 20);
@@ -62,7 +79,7 @@ int main(void){
     }
     catch (std::exception& e){
 
-        std::cerr << "2. Exception caught: " << e.what() << "\n";
+        std::cerr << "3. Exception caught: " << e.what() << "\n";
     }
     Victor.signForm(PP2);
     try{
@@ -70,11 +87,38 @@ int main(void){
     }
     catch (std::exception& e){
 
-        std::cerr << "2. Exception caught: " << e.what() << "\n";
+        std::cerr << "4. Exception caught: " << e.what() << "\n";
     }
     Victor.executeForm(PP2);
     std::cout << "\n";
 
+// ---------------------------------------------------------------
+
+    // RobotomyRequest functioning tests:
+    RobotomyRequestForm RR("Daniel");
+    Bureaucrat Boris("Boris", 40);
+    Bureaucrat Faesal("Faesal", 80);
+    std::cout << "\n";
+
+    std::cout << RR;
+    try{
+        Boris.executeForm(RR);
+    }
+    catch (std::exception& e){
+
+        std::cerr << "5. Exception caught: " << e.what() << "\n";
+    }
+    Boris.signForm(RR);
+    std::cout << RR;
+    try{
+        Faesal.executeForm(RR);
+    }
+    catch (std::exception& e){
+
+        std::cerr << "6. Exception caught: " << e.what() << "\n";
+    }
+    Boris.executeForm(RR);
+    std::cout << "\n";
 
     return (0);
 }

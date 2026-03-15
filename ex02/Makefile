@@ -1,6 +1,6 @@
 NAME		= Forms...Forms...AND...FORMS
 
-SRCS		= main.cpp AForm.cpp Bureaucrat.cpp PresidentialPardonForm.cpp #RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
+SRCS		= main.cpp AForm.cpp Bureaucrat.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp #ShrubberyCreationForm.cpp
 
 OBJ_DIR		= obj
 
