@@ -1,6 +1,6 @@
-NAME		=
+NAME		= Still_Better_Then_Making_Coffee
 
-SRCS		= main.cpp
+SRCS		= #main.cpp AForm.cpp Bureaucrat.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp Intern.cpp
 
 OBJ_DIR		= obj
 
