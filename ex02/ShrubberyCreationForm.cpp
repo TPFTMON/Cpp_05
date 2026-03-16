@@ -65,4 +65,16 @@ void        ShrubberyCreationForm::executeForm() const{
 //                  OTHER SHRUBBERYCREATIONFORM FUNCTIONS
 // ================================================================
 
-// ... other functions
+std::ostream& operator<<(std::ostream &os, const ShrubberyCreationForm &form){
+
+    std::string is_signed;
+    if (form.getIsSigned() == true){
+        is_signed = "yes";
+    }
+    else{
+        is_signed = "no";
+    }
+
+    os << "Form named " << form.getName() << ", info: Required Grade to be signed: {" << form.getRequiredGradeToSign() << "} | Required Grade to be executed: {" << form.getRequiredGradeToExec() << "} | Is this form signed? -> {" << is_signed << "} | Form's target: {" << form.getTarget() << "}\n";
+    return (os);
+}

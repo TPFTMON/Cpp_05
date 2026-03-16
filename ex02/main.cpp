@@ -2,7 +2,7 @@
 #include "AForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
-// #include "ShrubberyCreationForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int main(void){
 
@@ -37,6 +37,20 @@ int main(void){
 
 
 
+    ShrubberyCreationForm SCF1;
+    ShrubberyCreationForm SCF2("Millie's office");
+    ShrubberyCreationForm SCF3(SCF2);
+    ShrubberyCreationForm SCF4("Some Other Guy Initially");
+    SCF4 = SCF3;
+
+    std::cout << "\n";
+    std::cout << SCF1;
+    std::cout << SCF2;
+    std::cout << SCF3;
+    std::cout << SCF4;
+    std::cout << "\n";
+
+// ---------------------------------------------------------------
 
 
 
