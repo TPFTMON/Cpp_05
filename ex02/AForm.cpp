@@ -79,10 +79,6 @@ void        AForm::beSigned(const Bureaucrat& bureaucrat){
     this->_isSigned = true;
 }
 
-void        AForm::executeForm() const{
-
-    std::cout << "What are you doing here? This is basic AForm! Get out!\n";
-}
 
 void        AForm::execute(Bureaucrat const & executor) const{
 
@@ -95,6 +91,11 @@ void        AForm::execute(Bureaucrat const & executor) const{
 
     this->executeForm();
 }
+// void        AForm::executeForm() const{
+
+//     std::cout << "What are you doing here? This is basic AForm! Get out!\n";
+// }
+
 
 // ================================================================
 //                      EXCEPTIONS FUNCTIONS
@@ -113,6 +114,11 @@ const char* AForm::GradeTooLowException::what() const throw(){
 const char* AForm::FormNotSigned::what() const throw(){
 
     return ("the form is NOT signed!");
+}
+
+const char* AForm::FileOpenErrorException::what() const throw(){
+
+    return ("the file was not opened!");
 }
 
 

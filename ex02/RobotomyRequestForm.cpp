@@ -63,13 +63,13 @@ void RobotomyRequestForm::executeForm() const{
 
     srand(time(0));
     bool success = rand() % 2;
-    std::cout << success << "\n";
+    // std::cout << success << "\n";
 
     if (success == true){
         std::cout << this->_target << " has been robotomized successfully.\n";
     }
     else{
-        std::cout << "Robotomy has failed on " << this->_target << " (target's dead).\n";
+        std::cout << "Robotomy has failed on " << this->_target << " (" << this->_target << "'s dead).\n";
     }
 }
 

@@ -40,7 +40,7 @@ int main(void){
     ShrubberyCreationForm SCF1;
     ShrubberyCreationForm SCF2("Millie's office");
     ShrubberyCreationForm SCF3(SCF2);
-    ShrubberyCreationForm SCF4("Some Other Guy Initially");
+    ShrubberyCreationForm SCF4("Some Other Thing Initially");
     SCF4 = SCF3;
 
     std::cout << "\n";
@@ -50,63 +50,60 @@ int main(void){
     std::cout << SCF4;
     std::cout << "\n";
 
+
+
 // ---------------------------------------------------------------
 
 
 
-    // execute() tests for Presidential Pardon:
-    PresidentialPardonForm PP("Betty");
+    // execute() tests:
+    PresidentialPardonForm PP_test("Betty");
     Bureaucrat Morgan("Morgan", 2);
     Bureaucrat Freeman("Freeman", 20);
     std::cout << "\n";
 
-    std::cout << PP;
+    std::cout << PP_test;
     try{
-        PP.execute(Morgan);
+        PP_test.execute(Morgan);
     }
     catch (std::exception& e){
 
         std::cerr << "1. Exception caught: " << e.what() << "\n\n";
     }
-    Morgan.signForm(PP);
-    std::cout << PP;
+    Morgan.signForm(PP_test);
+    std::cout << PP_test;
     try{
-        PP.execute(Freeman);
+        PP_test.execute(Freeman);
     }
     catch (std::exception& e){
 
         std::cerr << "2. Exception caught: " << e.what() << "\n";
     }
-    PP.execute(Morgan);
+    PP_test.execute(Morgan);
     std::cout << "\n";
 
 
+// ----------------------------------------------------------
+
 
     // executeForm() and PresidentialPardon functioning tests:
-    PresidentialPardonForm PP2("Daniel");
+    PresidentialPardonForm PP("Daniel");
     Bureaucrat Victor("Victor", 2);
     Bureaucrat Nina("Nina", 20);
     std::cout << "\n";
 
-    try{
-        Victor.executeForm(PP2);
-    }
-    catch (std::exception& e){
+    std::cout << PP;
+    Victor.executeForm(PP);
+    Victor.signForm(PP);
+    std::cout << PP;
 
-        std::cerr << "3. Exception caught: " << e.what() << "\n";
-    }
-    Victor.signForm(PP2);
-    try{
-        Nina.executeForm(PP2);
-    }
-    catch (std::exception& e){
-
-        std::cerr << "4. Exception caught: " << e.what() << "\n";
-    }
-    Victor.executeForm(PP2);
+    Nina.executeForm(PP);
+    Victor.executeForm(PP);
     std::cout << "\n";
 
+
 // ---------------------------------------------------------------
+
 
     // RobotomyRequest functioning tests:
     RobotomyRequestForm RR("Daniel");
@@ -115,24 +112,33 @@ int main(void){
     std::cout << "\n";
 
     std::cout << RR;
-    try{
-        Boris.executeForm(RR);
-    }
-    catch (std::exception& e){
-
-        std::cerr << "5. Exception caught: " << e.what() << "\n";
-    }
+    Boris.executeForm(RR);
     Boris.signForm(RR);
     std::cout << RR;
-    try{
-        Faesal.executeForm(RR);
-    }
-    catch (std::exception& e){
 
-        std::cerr << "6. Exception caught: " << e.what() << "\n";
-    }
+    Faesal.executeForm(RR);
     Boris.executeForm(RR);
     std::cout << "\n";
+
+
+// ---------------------------------------------------------------
+
+
+    // ShrubberyCreation functioning tests:
+    ShrubberyCreationForm CS("Wardrobe");
+    Bureaucrat Ivy("Ivy", 130);
+    Bureaucrat Li("Li", 148);
+    std::cout << "\n";
+
+    std::cout << CS;
+    Ivy.executeForm(CS);
+    Ivy.signForm(CS);
+    std::cout << CS;
+    
+    Li.executeForm(CS);
+    Ivy.executeForm(CS);
+    std::cout << "\n";
+
 
     return (0);
 }

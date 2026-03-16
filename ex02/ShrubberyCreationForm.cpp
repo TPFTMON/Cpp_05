@@ -5,14 +5,14 @@
 // ================================================================
 
 ShrubberyCreationForm::ShrubberyCreationForm()
- : AForm("ShrubberyCreationForm", sign_minimal_grade_SCF, exec_minimal_grade_SCF), _target("NO_TARGET")
+ : AForm("Shrubbery Creation", sign_minimal_grade_SCF, exec_minimal_grade_SCF), _target("NO_TARGET")
 {
     std::cout << DEF_CONSTR_MSG << SHRUBBERYCREATIONFORM_MSG;
 
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
- : AForm("ShrubberyCreationForm", sign_minimal_grade_SCF, exec_minimal_grade_SCF), _target(target)
+ : AForm("Shrubbery Creation", sign_minimal_grade_SCF, exec_minimal_grade_SCF), _target(target)
 {
     std::cout << TARGET_CONSTR_MSG << SHRUBBERYCREATIONFORM_MSG;
 
@@ -56,7 +56,86 @@ std::string ShrubberyCreationForm::getTarget() const{
 
 void        ShrubberyCreationForm::executeForm() const{
 
-    std::cout << "SHRUBBERY CREATION FORM\n";
+    std::string filename = this->getTarget() + "_shrubbery";
+
+    // Checking for existing file (I don't want to override stuff)
+    // We try to open for reading. If successful, it exists.
+    std::ifstream checkFile(filename.c_str());
+    if (checkFile.is_open()){
+        checkFile.close();
+        std::cout << "Planting aborted: File '" << filename << "' already exists.\n";
+        return ;
+    }
+
+    std::ofstream ofshrubbery(filename.c_str());
+
+    if (!ofshrubbery.is_open()){
+        throw AForm::FileOpenErrorException();
+    }
+
+    srand(time(0));
+    bool success = rand() % 2;
+
+    if (success == false){
+        ofshrubbery << "            .        +          .      .          ." << "\n";
+        ofshrubbery << "     .            _        .                    ." << "\n";
+        ofshrubbery << "  ,              /;-._,-.____        ,-----.__" << "\n";
+        ofshrubbery << " ((        .    (_:#::_.:::. `-._   /:, /-._, `._," << "\n";
+        ofshrubbery << "  `                 \\   _|`\"=:_::.`.();  \\ __/ /" << "\n";
+        ofshrubbery << "                      ,    `./  \\:. `.   ()==-\'  ." << "\n";
+        ofshrubbery << "    .      ., ,-=-.  ,\\, +#./`   \\:.  / /           ." << "\n";
+        ofshrubbery << ".           \\/:/`-\' , ,\\ \'` ` `   (): , /_  -o" << "\n";
+        ofshrubbery << "       .    /:+- - + +- : :- + + -:\'  /(o-() \\()     ." << "\n";
+        ofshrubbery << "  .      ,=\':  \\    ` `/` \' , , ,:\' `\'--\".--\"---._/`7" << "\n";
+        ofshrubbery << "   `.   (    \\: \\,-._` ` + \'\\, ,\"   _,--._,---\":.__/" << "\n";
+        ofshrubbery << "              \\:  `  X` _| _,\\/\'   .-\'" << "\n";
+        ofshrubbery << ".               \":._:`\\____  /:\'  /      .           ." << "\n";
+        ofshrubbery << "                    \\::.  :\\/:\'  /              +" << "\n";
+        ofshrubbery << "   .                 `.:.  /:\'  {}      ." << "\n";
+        ofshrubbery << "           .           ():_():;   \\           ." << "\n";
+        ofshrubbery << "                      /:. _/ ,  |" << "\n";
+        ofshrubbery << "                   . (|::.     ,`                  ." << "\n";
+        ofshrubbery << "     .                |::.    {}\\" << "\n";
+        ofshrubbery << "                      |::.\\  \\ `." << "\n";
+        ofshrubbery << "                      |:::()\\    |" << "\n";
+        ofshrubbery << "              O       |:::/{ }  |                  (o" << "\n";
+        ofshrubbery << "               ()  ___/#\\::`/ (O \"==._____   O, (O  /`" << "\n";
+        ofshrubbery << "          ~~~w/w~\"~~,\\` `:/,-(~`\"~~~~~~~~\"~o~\\~/~w|/~" << "\n";
+        ofshrubbery << "      ~~~~~~~~~~~~~~~~~~~~~~~\\W~~~~~~~~~~~~\\|/~~" << "\n";
+    }
+    else {
+        ofshrubbery << "                                                             ." << "\n";
+        ofshrubbery << "                                              .         ;" << "\n";
+        ofshrubbery << "                 .              .              ;%     ;;" << "\n";
+        ofshrubbery << "                   ,           ,                :;%  %;" << "\n";
+        ofshrubbery << "                    :         ;                   :;%;'     .," << "\n";
+        ofshrubbery << "           ,.        %;     %;            ;        %;'    ,;" << "\n";
+        ofshrubbery << "             ;       ;%;  %%;        ,     %;    ;%;    ,%'" << "\n";
+        ofshrubbery << "              %;       %;%;      ,  ;       %;  ;%;   ,%;'" << "\n";
+        ofshrubbery << "               ;%;      %;        ;%;        % ;%;  ,%;'" << "\n";
+        ofshrubbery << "                `%;.     ;%;     %;'         `;%%;.%;'" << "\n";
+        ofshrubbery << "                 `:;%.    ;%%. %@;        %; ;@%;%'" << "\n";
+        ofshrubbery << "                    `:%;.  :;bd%;          %;@%;'" << "\n";
+        ofshrubbery << "                      `@%:.  :;%.         ;@@%;'" << "\n";
+        ofshrubbery << "                        `@%.  `;@%.      ;@@%;" << "\n";
+        ofshrubbery << "                          `@%%. `@%%    ;@@%;" << "\n";
+        ofshrubbery << "                            ;@%. :@%%  %@@%;" << "\n";
+        ofshrubbery << "                              %@bd%%%bd%%:;" << "\n";
+        ofshrubbery << "                                #@%%%%%:;;" << "\n";
+        ofshrubbery << "                                %@@%%%::;" << "\n";
+        ofshrubbery << "                                %@@@%(o);  . '" << "\n";
+        ofshrubbery << "                                %@@@o%;:(.,'" << "\n";
+        ofshrubbery << "                            `.. %@@@o%::;" << "\n";
+        ofshrubbery << "                               `)@@@o%::;" << "\n";
+        ofshrubbery << "                                %@@(o)::;" << "\n";
+        ofshrubbery << "                               .%@@@@%::;" << "\n";
+        ofshrubbery << "                               ;%@@@@%::;." << "\n";
+        ofshrubbery << "                              ;%@@@@%%:;;;." << "\n";
+        ofshrubbery << "                          ...;%@@@@@%%:;;;;,.." << "\n";
+    }
+
+    ofshrubbery.close();
+    std::cout << "Shrubbery has been planted in " << filename << "\n";
 }
 
 
