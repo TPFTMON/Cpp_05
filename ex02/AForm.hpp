@@ -29,10 +29,8 @@ class AForm{
         const int         _gradeRequiredToSign;
         const int         _gradeRequiredToExec;
 
-    protected:
-        virtual void executeForm() const = 0;
 
-    public:
+        public:
         AForm();
         AForm(std::string name, int gradeRequiredToSign, int gradeRequiredToExec);
         AForm(const AForm &to_copy);
@@ -45,7 +43,8 @@ class AForm{
         int          getRequiredGradeToSign() const;
         int          getRequiredGradeToExec() const;
         void         beSigned(const Bureaucrat& bureaucrat);
-        void         execute(Bureaucrat const & executor) const;
+        virtual void execute(Bureaucrat const & executor) const;
+        virtual void executeForm() const = 0;
 
         // Exceptions:
         class GradeTooHighException : public std::exception {
