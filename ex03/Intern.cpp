@@ -1,4 +1,5 @@
 #include "Intern.hpp"
+#include "AForm.hpp"
 
 // ================================================================
 //                         ORTHODOX BASE
@@ -20,7 +21,7 @@ Intern& Intern::operator=(const Intern &assign){
     if (this != &assign){
         // ... assigning
     }
-    return *this;
+    return (*this);
 
 }
 
@@ -35,7 +36,38 @@ Intern::~Intern(){
 //                OTHER INTERN MEMBER FUNCTIONS
 // ================================================================
 
-// ... other members
+// provate Intern functions:
+AForm   *Intern::makePresidentialPardon(std::string const &target) const{
+
+}
+
+AForm   *Intern::makeRobotomyRequest(std::string const &target) const{
+
+}
+
+AForm   *Intern::makeShrubberyCreation(std::string const &target) const{
+
+}
+
+
+
+typedef AForm *(Intern::*InternMakeFormMemFn)(const std::string &target) const;
+
+AForm   *makeForm(std::string formType, std::string target){
+
+    std::string types[3] = {
+        "presidential pardon",
+        "robotomy request",
+        "shrubbery creation"
+    };
+
+    InternMakeFormMemFn functions[3] = {
+        &Intern::makePresidentialPardon,
+        &Intern::makeRobotomyRequest,
+        &Intern::makeShrubberyCreation,
+    };
+
+}
 
 
 

@@ -3,6 +3,8 @@
 
 // Includes:
 # include <iostream>
+# include <string>
+// # include <>
 
 
 // Messages:
@@ -15,10 +17,14 @@
 
 
 // Classes:
+class AForm;
+
 class Intern{
 
     private:
-        // ... some private stuff
+        AForm   *makePresidentialPardon(std::string const &target) const;
+        AForm   *makeRobotomyRequest(std::string const &target) const;
+        AForm   *makeShrubberyCreation(std::string const &target) const;
 
     public:
         // Orthodox Canonical Form:
@@ -28,7 +34,7 @@ class Intern{
         ~Intern();
 
         // Other member functions:
-        // ... some members
+        AForm   *makeForm(std::string formType, std::string target);
 
 };
 
