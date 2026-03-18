@@ -63,18 +63,17 @@ AForm   *Intern::makeShrubberyCreation(std::string const &target) const{
     return (shrubbery);
 }
 
-// AForm   *Intern::makeOther(std::string const &target) const{
-
-//     AForm *other = new AForm(target);
-//     return (other);
-// }
 
 typedef AForm *(Intern::*InternMakeFormMemFn)(const std::string &target) const;
 //               ||
 //               \/
 AForm   *Intern::makeForm(std::string formType, std::string target){
 
-    // std::string type = formType.tolower();
+    // std::string type = formType;
+
+    // for (size_t i = 0; i < type.length(); ++i){                       // I thought I would just transform the string to lowercase. But whatever.
+    //     type[i] = std::tolower(static_cast<unsigned char>(type[i]));
+    // }
 
     std::string types[3] = {
         "presidential pardon",

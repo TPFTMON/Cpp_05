@@ -4,8 +4,6 @@
 // Includes:
 # include <iostream>
 # include <string>
-// # include <>
-
 
 // Messages:
 # define INTERN_MSG "\e[0;32mIntern\n\e[0m"
@@ -25,7 +23,6 @@ class Intern{
         AForm   *makePresidentialPardon(std::string const &target) const;
         AForm   *makeRobotomyRequest(std::string const &target) const;
         AForm   *makeShrubberyCreation(std::string const &target) const;
-        // AForm   *makeOther(std::string const &target) const;
 
 
     public:

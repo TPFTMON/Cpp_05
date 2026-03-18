@@ -66,6 +66,13 @@ int main(void){
     std::cout << "\n";
 
 
+// ----------------------------------------------------------------
+
+    Intern scaredIntern;
+    AForm* unknownForm;
+    unknownForm = scaredIntern.makeForm("some new random", "Victor");
+
+
 
     delete ppf;
     delete rrf;
