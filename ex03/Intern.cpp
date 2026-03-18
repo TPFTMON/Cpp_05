@@ -1,5 +1,8 @@
 #include "Intern.hpp"
 #include "AForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 // ================================================================
 //                         ORTHODOX BASE
@@ -39,14 +42,23 @@ Intern::~Intern(){
 // provate Intern functions:
 AForm   *Intern::makePresidentialPardon(std::string const &target) const{
 
+    PresidentialPardonForm *presidential = new PresidentialPardonForm(target);
+
+    return (presidential);
 }
 
 AForm   *Intern::makeRobotomyRequest(std::string const &target) const{
 
+    RobotomyRequestForm *robotomy = new RobotomyRequestForm(target);
+
+    return (robotomy);
 }
 
 AForm   *Intern::makeShrubberyCreation(std::string const &target) const{
 
+    ShrubberyCreationForm *shrubbery = new ShrubberyCreationForm(target);
+
+    return (shrubbery);
 }
 
 
