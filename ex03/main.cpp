@@ -3,10 +3,73 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "Intern.hpp"
 
 int main(void){
 
+    // Intern testing:
+    Intern someRandomIntern;
+    AForm* ppf;
 
+    ppf = someRandomIntern.makeForm("presidential pardon", "Bender");
+    Bureaucrat Victor("Victor", 2);
+    Bureaucrat Nina("Nina", 20);
+    std::cout << "\n";
+
+    std::cout << *ppf;
+    Victor.executeForm(*ppf);
+    Victor.signForm(*ppf);
+    std::cout << *ppf;
+
+    Nina.executeForm(*ppf);
+    Victor.executeForm(*ppf);
+    std::cout << "\n";
+
+
+// ----------------------------------------------------------------
+
+    Intern someOtherRandomIntern;
+    AForm* rrf;
+
+    rrf = someOtherRandomIntern.makeForm("robotomy request", "Daniel");
+    Bureaucrat Boris("Boris", 40);
+    Bureaucrat Faesal("Faesal", 80);
+    std::cout << "\n";
+
+    std::cout << *rrf;
+    Boris.executeForm(*rrf);
+    Boris.signForm(*rrf);
+    std::cout << *rrf;
+
+    Faesal.executeForm(*rrf);
+    Boris.executeForm(*rrf);
+    std::cout << "\n";
+
+
+// ----------------------------------------------------------------
+
+    Intern someVERYOtherRandomIntern;
+    AForm* scf;
+
+    scf = someVERYOtherRandomIntern.makeForm("shrubbery creation", "Home");
+    Bureaucrat Ivy("Ivy", 130);
+    Bureaucrat Li("Li", 148);
+    std::cout << "\n";
+
+    std::cout << *scf;
+    Ivy.executeForm(*scf);
+    Ivy.signForm(*scf);
+    std::cout << *scf;
+
+    Li.executeForm(*scf);
+    Ivy.executeForm(*scf);
+    std::cout << "\n";
+
+
+
+    delete ppf;
+    delete rrf;
+    delete scf;
 
     return (0);
 }

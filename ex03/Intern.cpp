@@ -16,6 +16,7 @@ Intern::Intern(){
 Intern::Intern(const Intern &to_copy){
     std::cout << COPY_CONSTR_MSG << INTERN_MSG;
     // ... copying
+    (void)to_copy;
 
 }
 
@@ -23,6 +24,7 @@ Intern& Intern::operator=(const Intern &assign){
     std::cout << COPY_ASSIGN_OP_MSG << INTERN_MSG;
     if (this != &assign){
         // ... assigning
+        (void)assign;
     }
     return (*this);
 
@@ -61,11 +63,18 @@ AForm   *Intern::makeShrubberyCreation(std::string const &target) const{
     return (shrubbery);
 }
 
+// AForm   *Intern::makeOther(std::string const &target) const{
 
+//     AForm *other = new AForm(target);
+//     return (other);
+// }
 
 typedef AForm *(Intern::*InternMakeFormMemFn)(const std::string &target) const;
+//               ||
+//               \/
+AForm   *Intern::makeForm(std::string formType, std::string target){
 
-AForm   *makeForm(std::string formType, std::string target){
+    // std::string type = formType.tolower();
 
     std::string types[3] = {
         "presidential pardon",
@@ -76,8 +85,17 @@ AForm   *makeForm(std::string formType, std::string target){
     InternMakeFormMemFn functions[3] = {
         &Intern::makePresidentialPardon,
         &Intern::makeRobotomyRequest,
-        &Intern::makeShrubberyCreation,
+        &Intern::makeShrubberyCreation
     };
+
+    for (int i = 0; i < 3; i++){
+        if (formType == types[i]){
+            std::cout << "Intern creates " << formType << " form.\n";
+            return ((this->*functions[i])(target));
+        }
+    }
+    std::cout << "Intern cannot create " << formType << " form. It does not exist.\n";
+    return (NULL);
 
 }
 

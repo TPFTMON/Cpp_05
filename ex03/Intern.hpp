@@ -25,6 +25,8 @@ class Intern{
         AForm   *makePresidentialPardon(std::string const &target) const;
         AForm   *makeRobotomyRequest(std::string const &target) const;
         AForm   *makeShrubberyCreation(std::string const &target) const;
+        // AForm   *makeOther(std::string const &target) const;
+
 
     public:
         // Orthodox Canonical Form:
